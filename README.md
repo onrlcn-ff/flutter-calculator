@@ -1,6 +1,6 @@
 # calculator
 
-Basit Hesap Makinesi
+Flutter Hesap Makinesi
 
 ## Getting Started
 
