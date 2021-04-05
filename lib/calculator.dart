@@ -41,7 +41,10 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
       child: Container(
         height: MediaQuery.of(context).size.height / 11.6,
         color: color,
-        child: Center(child: Text(buttonName, style: TextStyle(fontSize: 22))),
+        child: Center(
+            child: Text(buttonName,
+                style: TextStyle(
+                    fontSize: 22, color: Theme.of(context).backgroundColor))),
       ),
     );
   }
@@ -49,7 +52,7 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColorDark,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
         child: Column(children: [
           Expanded(
@@ -62,7 +65,9 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                       width: MediaQuery.of(context).size.width,
                       child: Text(process,
                           style: TextStyle(
-                              fontSize: 32, fontWeight: FontWeight.bold))),
+                              color: Theme.of(context).accentColor,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold))),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 20,
                   ),
@@ -71,46 +76,67 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                       width: MediaQuery.of(context).size.width,
                       child: Text(result,
                           style: TextStyle(
-                              fontSize: 48, fontWeight: FontWeight.bold))),
+                              color: Theme.of(context).accentColor,
+                              fontSize: 48,
+                              fontWeight: FontWeight.bold))),
                 ],
               ),
             ),
           ),
-          Divider(
-            color: Theme.of(context).primaryColorDark,
-          ),
           Table(
-            border: TableBorder.all(color: Theme.of(context).primaryColorDark),
+            border: TableBorder.all(
+                color: Theme.of(context).backgroundColor,
+                style: BorderStyle.solid),
             children: [
               TableRow(children: [
-                calculatorKeys(buttonName: "AC", color: Colors.amber),
-                calculatorKeys(buttonName: "<-", color: Colors.amber),
-                calculatorKeys(buttonName: "", color: Colors.amber),
-                calculatorKeys(buttonName: "/", color: Colors.amber),
+                calculatorKeys(
+                    buttonName: "AC", color: Theme.of(context).buttonColor),
+                calculatorKeys(
+                    buttonName: "<-", color: Theme.of(context).buttonColor),
+                calculatorKeys(
+                    buttonName: "", color: Theme.of(context).buttonColor),
+                calculatorKeys(
+                    buttonName: "/", color: Theme.of(context).buttonColor),
               ]),
               TableRow(children: [
-                calculatorKeys(buttonName: "7", color: Colors.teal),
-                calculatorKeys(buttonName: "8", color: Colors.teal),
-                calculatorKeys(buttonName: "9", color: Colors.teal),
-                calculatorKeys(buttonName: "*", color: Colors.amber),
+                calculatorKeys(
+                    buttonName: "7", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "8", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "9", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "*", color: Theme.of(context).buttonColor),
               ]),
               TableRow(children: [
-                calculatorKeys(buttonName: "4", color: Colors.teal),
-                calculatorKeys(buttonName: "5", color: Colors.teal),
-                calculatorKeys(buttonName: "6", color: Colors.teal),
-                calculatorKeys(buttonName: "-", color: Colors.amber),
+                calculatorKeys(
+                    buttonName: "4", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "5", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "6", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "-", color: Theme.of(context).buttonColor),
               ]),
               TableRow(children: [
-                calculatorKeys(buttonName: "1", color: Colors.teal),
-                calculatorKeys(buttonName: "2", color: Colors.teal),
-                calculatorKeys(buttonName: "3", color: Colors.teal),
-                calculatorKeys(buttonName: "+", color: Colors.amber),
+                calculatorKeys(
+                    buttonName: "1", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "2", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "3", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "+", color: Theme.of(context).buttonColor),
               ]),
               TableRow(children: [
-                calculatorKeys(buttonName: "0", color: Colors.teal),
-                calculatorKeys(buttonName: "00", color: Colors.teal),
-                calculatorKeys(buttonName: ".", color: Colors.teal),
-                calculatorKeys(buttonName: "=", color: Colors.amber),
+                calculatorKeys(
+                    buttonName: "0", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "00", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: ".", color: Theme.of(context).accentColor),
+                calculatorKeys(
+                    buttonName: "=", color: Theme.of(context).buttonColor),
               ]),
             ],
           )
