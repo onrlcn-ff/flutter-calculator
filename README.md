@@ -1,6 +1,6 @@
 # calculator
 
-A new Flutter project.
+Basit Hesap Makinesi
 
 ## Getting Started
 
