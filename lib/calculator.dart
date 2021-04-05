@@ -52,7 +52,7 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
             color: color,
           ),
           height: MediaQuery.of(context).size.height / 11,
-          width: MediaQuery.of(context).size.width / 4.3,
+          width: MediaQuery.of(context).size.width / 4.4,
           child: Center(
               child: Text(buttonName,
                   style: TextStyle(

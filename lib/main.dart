@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'Calculator',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
-        backgroundColor: Color(0xFF0A3E4A),
-        accentColor: Color(0xFFDB6568),
-        buttonColor: Color(0xFFDDBC66),
+        backgroundColor: Color(0xFF46707E),
+        accentColor: Color(0xFFCAC66C),
+        buttonColor: Color(0xFF86B460),
       ),
       home: CalculatorHomePage(),
     );
