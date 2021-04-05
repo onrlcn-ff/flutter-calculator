@@ -52,24 +52,29 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
       backgroundColor: Theme.of(context).primaryColorDark,
       body: Container(
         child: Column(children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 6,
-          ),
-          Container(
-              alignment: Alignment.bottomRight,
-              width: MediaQuery.of(context).size.width,
-              child: Text(process,
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold))),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 20,
-          ),
-          Container(
-              alignment: Alignment.bottomRight,
-              width: MediaQuery.of(context).size.width,
-              child: Text(result,
-                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold))),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 6,
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      alignment: Alignment.bottomRight,
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(process,
+                          style: TextStyle(
+                              fontSize: 32, fontWeight: FontWeight.bold))),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 20,
+                  ),
+                  Container(
+                      alignment: Alignment.bottomRight,
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(result,
+                          style: TextStyle(
+                              fontSize: 48, fontWeight: FontWeight.bold))),
+                ],
+              ),
+            ),
           ),
           Divider(
             color: Theme.of(context).primaryColorDark,
