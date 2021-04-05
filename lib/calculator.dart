@@ -9,6 +9,7 @@ class CalculatorHomePage extends StatefulWidget {
 class _CalculatorHomePageState extends State<CalculatorHomePage> {
   String process = "0";
   String result = "0";
+  double mem;
 
   proccess(String buttonName) {
     setState(() {
@@ -21,7 +22,12 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
         try {
           Parser p = Parser();
           Expression exp = p.parse(process);
-          result = exp.evaluate(EvaluationType.REAL, ContextModel()).toString();
+          mem = exp.evaluate(EvaluationType.REAL, ContextModel());
+          if (0 == mem % 1) {
+            result = mem.toInt().toString();
+          } else {
+            result = mem.toString();
+          }
         } on Exception catch (e) {
           result = "Eror";
         }
@@ -38,13 +44,20 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
   Widget calculatorKeys({String buttonName, Color color}) {
     return InkWell(
       onTap: () => proccess(buttonName),
-      child: Container(
-        height: MediaQuery.of(context).size.height / 11.6,
-        color: color,
-        child: Center(
-            child: Text(buttonName,
-                style: TextStyle(
-                    fontSize: 22, color: Theme.of(context).backgroundColor))),
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: color,
+          ),
+          height: MediaQuery.of(context).size.height / 11,
+          width: MediaQuery.of(context).size.width / 4.3,
+          child: Center(
+              child: Text(buttonName,
+                  style: TextStyle(
+                      fontSize: 22, color: Theme.of(context).backgroundColor))),
+        ),
       ),
     );
   }
@@ -61,6 +74,7 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                      padding: EdgeInsets.only(right: 10),
                       alignment: Alignment.bottomRight,
                       width: MediaQuery.of(context).size.width,
                       child: Text(process,
@@ -72,6 +86,7 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                     height: MediaQuery.of(context).size.height / 20,
                   ),
                   Container(
+                      padding: EdgeInsets.only(right: 10),
                       alignment: Alignment.bottomRight,
                       width: MediaQuery.of(context).size.width,
                       child: Text(result,
@@ -83,62 +98,63 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
               ),
             ),
           ),
-          Table(
-            border: TableBorder.all(
-                color: Theme.of(context).backgroundColor,
-                style: BorderStyle.solid),
-            children: [
-              TableRow(children: [
-                calculatorKeys(
-                    buttonName: "AC", color: Theme.of(context).buttonColor),
-                calculatorKeys(
-                    buttonName: "<-", color: Theme.of(context).buttonColor),
-                calculatorKeys(
-                    buttonName: "", color: Theme.of(context).buttonColor),
-                calculatorKeys(
-                    buttonName: "/", color: Theme.of(context).buttonColor),
-              ]),
-              TableRow(children: [
-                calculatorKeys(
-                    buttonName: "7", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "8", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "9", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "*", color: Theme.of(context).buttonColor),
-              ]),
-              TableRow(children: [
-                calculatorKeys(
-                    buttonName: "4", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "5", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "6", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "-", color: Theme.of(context).buttonColor),
-              ]),
-              TableRow(children: [
-                calculatorKeys(
-                    buttonName: "1", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "2", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "3", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "+", color: Theme.of(context).buttonColor),
-              ]),
-              TableRow(children: [
-                calculatorKeys(
-                    buttonName: "0", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "00", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: ".", color: Theme.of(context).accentColor),
-                calculatorKeys(
-                    buttonName: "=", color: Theme.of(context).buttonColor),
-              ]),
-            ],
+          Container(
+            width: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  calculatorKeys(
+                      buttonName: "AC", color: Theme.of(context).buttonColor),
+                  calculatorKeys(
+                      buttonName: "<-", color: Theme.of(context).buttonColor),
+                  calculatorKeys(
+                      buttonName: "", color: Theme.of(context).buttonColor),
+                  calculatorKeys(
+                      buttonName: "/", color: Theme.of(context).buttonColor),
+                ]),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  calculatorKeys(
+                      buttonName: "7", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "8", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "9", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "*", color: Theme.of(context).buttonColor),
+                ]),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  calculatorKeys(
+                      buttonName: "4", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "5", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "6", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "-", color: Theme.of(context).buttonColor),
+                ]),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  calculatorKeys(
+                      buttonName: "1", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "2", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "3", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "+", color: Theme.of(context).buttonColor),
+                ]),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  calculatorKeys(
+                      buttonName: "0", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "00", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: ".", color: Theme.of(context).accentColor),
+                  calculatorKeys(
+                      buttonName: "=", color: Theme.of(context).buttonColor),
+                ]),
+              ],
+            ),
           )
         ]),
       ),
